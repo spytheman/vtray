@@ -1,5 +1,5 @@
 # Description
-A V wrapper for the C-based library https://github.com/zserge/tray .
+A V wrapper for the C library https://github.com/zserge/tray .
 
 It allows you to make cross platform apps with V, that show a small icon
 and menu in the system tray on the supported platforms (linux, macos, 
