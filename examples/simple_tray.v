@@ -4,8 +4,9 @@ import time
 mut t := vtray.new()
 t.set_icon(@VMODROOT + '/examples/smiley.png')
 t.set_menu([
+	vtray.new_menu_item(text: 'should be checked', checked: 1),
 	vtray.new_menu_item(
-		text: 'abc'
+		text: 'click me'
 		cb: fn [mut t] (mut mi vtray.MenuItem) {
 			t.set_icon('indicator-messages')
 			mi.text = time.now().str()
@@ -14,7 +15,8 @@ t.set_menu([
 			dump(mi.text)
 		}
 	),
-	vtray.new_menu_item(text: 'def', disabled: 1),
+	vtray.new_menu_item(text: 'this should be disabled', disabled: 1),
+	vtray.new_menu_item(text: '-', disabled: 1),
 	vtray.new_menu_item(
 		text: 'quit'
 		cb: fn [mut t] (mut mi vtray.MenuItem) {
