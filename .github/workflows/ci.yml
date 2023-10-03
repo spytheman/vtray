@@ -35,6 +35,7 @@ jobs:
           mkdir -p ~/.vmodules
           ln -s $(pwd) ~/.vmodules/vtray
           find .
+          pwd
 
       - name: Test code formatting
         run: |
@@ -43,7 +44,9 @@ jobs:
           v fmt -verify .
 
       - name: Build vtray with -shared
-        run: v -shared vtray
+        run: |
+          cd vtray
+          v -shared vtray
 
       - name: Run tests
         run: v test vtray
