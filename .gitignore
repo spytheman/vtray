@@ -22,3 +22,6 @@ bin/
 # vweb and database
 *.db
 *.js
+
+examples/simple_tray
+examples/simple_tray.exe
