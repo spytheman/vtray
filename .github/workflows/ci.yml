@@ -38,7 +38,7 @@ jobs:
       - name: Test code formatting
         run: |
           cd vtray
-          v fmt diff .
+          v fmt -diff .
           v fmt -verify .
 
       - name: Build vtray with -shared
