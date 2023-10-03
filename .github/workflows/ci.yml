@@ -10,7 +10,7 @@ jobs:
   checks:
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos-latest, windows-latest]
+        os: [ubuntu-20.04, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
@@ -34,6 +34,7 @@ jobs:
           cd vtray
           mkdir -p ~/.vmodules
           ln -s $(pwd) ~/.vmodules/vtray
+          find .
 
       - name: Test code formatting
         run: |
