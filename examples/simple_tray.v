@@ -1,5 +1,5 @@
-import vtray
 import time
+import vtray
 
 mut t := vtray.new()
 t.set_icon(@VMODROOT + '/examples/smiley.png')
