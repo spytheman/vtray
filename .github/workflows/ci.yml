@@ -1,0 +1,54 @@
+name: General CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  checks:
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - name: Setup Vlang
+        uses: vlang/setup-v@v1.3
+        with:
+          stable: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --quiet -y libappindicator3-dev
+
+      - name: Checkout vtray
+        uses: actions/checkout@v2
+        with:
+          path: vtray
+
+      - name: Link the local vtray folder in ~/.vmodules/vtray
+        run: |
+          cd vtray
+          mkdir -p ~/.vmodules
+          ln -s $(pwd) ~/.vmodules/vtray
+
+      - name: Test code formatting
+        run: |
+          cd vtray
+          v fmt diff .
+          v fmt -verify .
+
+      - name: Build vtray with -shared
+        run: v -shared vtray
+
+      - name: Run tests
+        run: v test vtray
+
+      - name: Build the examples
+        run: v should-compile-all vtray/examples/
+
+      - name: Check md files
+        run: v check-md vtray
