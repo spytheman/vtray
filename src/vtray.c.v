@@ -7,14 +7,12 @@ $if windows {
 $if linux {
 	#define TRAY_APPINDICATOR 1
 	#pkgconfig gtk+-2.0
+	#pkgconfig appindicator3-0.1
 }
 
 $if macos {
 	#define TRAY_APPKIT 1
 }
-
-#flag linux -I/usr/include/libappindicator3-0.1
-#flag linux -lappindicator
 
 #include "@VMODROOT/src/zserge_tray/tray.h"
 
