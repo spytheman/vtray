@@ -19,3 +19,19 @@ You can install the module in 2 ways:
 (in this case, use `import vtray` in your app):
 
 `git submodule add https://github.com/spytheman/vtray src/vtray`
+
+## Dependencies:
+
+This module is currently tested to work well on Ubuntu 20.04 .
+It depends on libappindicator3-dev, libgtk2.0-dev and libgdk-pixbuf2.0-dev.
+
+You can install those with:
+```sh
+sudo apt install --quiet -y libappindicator3-dev libgtk2.0-dev libgdk-pixbuf2.0-dev
+```
+
+It currently fails to compile on latest macOS Sonoma 14.0.
+
+It is not tested at all on Windows for now, but cross compiles for it with:
+`v -os windows examples/simple_tray.v`
+
