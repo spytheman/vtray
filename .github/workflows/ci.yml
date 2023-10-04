@@ -35,6 +35,8 @@ jobs:
           cd vtray
           mkdir -p ~/.vmodules
           ln -s $(pwd) ~/.vmodules/vtray
+          git log -n1
+          v version
 
       - name: Test code formatting
         run: |
@@ -54,4 +56,10 @@ jobs:
         run: v should-compile-all vtray/examples/
 
       - name: Check md files
-        run: v check-md README.md
+        run: v check-md vtray/README.md
+
+      - name: Cleanup (allow for cached local nektos/act runs)
+        run: |
+          rm -rf ~/.vmodules/vtray
+          rm -rf vtray/
+          v wipe-cache
