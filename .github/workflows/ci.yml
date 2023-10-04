@@ -15,11 +15,13 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Setup Vlang
+        if: ${{ !env.SKIP_DEPS }}
         uses: vlang/setup-v@v1.3
         with:
           stable: true
 
       - name: Install dependencies
+        if: ${{ !env.SKIP_DEPS }}
         run: |
           sudo apt-get update
           sudo apt-get install --quiet -y libappindicator3-dev libgtk2.0-dev \
@@ -34,6 +36,7 @@ jobs:
         run: |
           cd vtray
           mkdir -p ~/.vmodules
+          rm -rf ~/.vmodules/vtray
           ln -s $(pwd) ~/.vmodules/vtray
           git log -n1
           v version
