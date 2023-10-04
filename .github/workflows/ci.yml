@@ -14,6 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
+
       - name: Setup Vlang
         if: ${{ !env.SKIP_DEPS }}
         uses: vlang/setup-v@v1.3
@@ -28,41 +29,48 @@ jobs:
                                           libgdk-pixbuf2.0-dev
 
       - name: Checkout vtray
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          path: vtray
+          path: m
 
       - name: Link the local vtray folder in ~/.vmodules/vtray
         run: |
-          cd vtray
+          cd m
           mkdir -p ~/.vmodules
           rm -rf ~/.vmodules/vtray
           ln -s $(pwd) ~/.vmodules/vtray
+          pwd
           git log -n1
           v version
 
       - name: Test code formatting
         run: |
-          cd vtray
+          cd m
           v fmt -diff .
           v fmt -verify .
 
       - name: Build vtray with -shared
         run: |
-          cd vtray
+          cd m
           v -shared .
 
       - name: Run tests
-        run: v test vtray
+        run: |
+          cd m
+          v test .
 
       - name: Build the examples
-        run: v should-compile-all vtray/examples/
+        run: |
+          cd m
+          v should-compile-all examples/
 
       - name: Check md files
-        run: v check-md vtray/README.md
+        run: |
+          cd m
+          v check-md README.md
 
       - name: Cleanup (allow for cached local nektos/act runs)
         run: |
           rm -rf ~/.vmodules/vtray
-          rm -rf vtray/
+          rm -rf m
           v wipe-cache
