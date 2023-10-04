@@ -41,7 +41,7 @@ jobs:
           rm -rf ~/.vmodules/vtray
           ln -s $(pwd) ~/.vmodules/vtray
           pwd
-          git log -n1
+          ## git log -n1
           v version
 
       - name: Test code formatting
