@@ -6,22 +6,14 @@ $if windows {
 
 $if linux {
 	#define TRAY_APPINDICATOR 1
+	#pkgconfig gtk+-2.0
 }
 
 $if macos {
 	#define TRAY_APPKIT 1
 }
 
-#flag linux -I/usr/include/gtk-2.0
-#flag linux -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include
-#flag linux -I/usr/include/glib-2.0
-#flag linux -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
-#flag linux -I/usr/include/pango-1.0
-#flag linux -I/usr/include/harfbuzz
-#flag linux -I/usr/include/cairo
-#flag linux -I/usr/include/atk-1.0
 #flag linux -I/usr/include/libappindicator3-0.1
-#flag linux -lgdk-x11-2.0
 #flag linux -lappindicator
 
 #include "@VMODROOT/src/zserge_tray/tray.h"

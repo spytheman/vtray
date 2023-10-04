@@ -46,7 +46,7 @@ jobs:
       - name: Build vtray with -shared
         run: |
           cd vtray
-          v -shared vtray
+          v -shared .
 
       - name: Run tests
         run: v test vtray
