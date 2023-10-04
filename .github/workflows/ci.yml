@@ -22,7 +22,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --quiet -y libappindicator3-dev libgtk2.0-dev libgdk-pixbuf2.0-dev
+          sudo apt-get install --quiet -y libappindicator3-dev libgtk2.0-dev \
+                                          libgdk-pixbuf2.0-dev
 
       - name: Checkout vtray
         uses: actions/checkout@v2
@@ -34,8 +35,6 @@ jobs:
           cd vtray
           mkdir -p ~/.vmodules
           ln -s $(pwd) ~/.vmodules/vtray
-          find .
-          pwd
 
       - name: Test code formatting
         run: |
