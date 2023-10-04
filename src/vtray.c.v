@@ -8,6 +8,7 @@ $if linux {
 	#define TRAY_APPINDICATOR 1
 	#pkgconfig gtk+-2.0
 	#pkgconfig appindicator3-0.1
+	#pkgconfig gdk-pixbuf-2.0
 }
 
 $if macos {
