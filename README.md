@@ -15,6 +15,7 @@ You can install the module in 2 ways:
 `v install spytheman.vtray`
 
 
-* Directly from github, to a local folder in your app's src/ folder (in this case, use `import vtray` in your app):
+* Directly from github, to a local folder in your app's src/ folder 
+(in this case, use `import vtray` in your app):
 
 `git submodule add https://github.com/spytheman/vtray src/vtray`

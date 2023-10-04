@@ -56,4 +56,4 @@ jobs:
         run: v should-compile-all vtray/examples/
 
       - name: Check md files
-        run: v check-md vtray
+        run: v check-md README.md
