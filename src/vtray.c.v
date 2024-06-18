@@ -66,7 +66,6 @@ pub fn new() &Tray {
 
 type FnTrayMenuCb = fn (mut mi MenuItem)
 
-[params]
 pub struct MenuItem {
 pub mut:
 	text     string
