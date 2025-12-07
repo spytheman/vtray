@@ -2,6 +2,7 @@ module vtray
 
 $if windows {
 	#define TRAY_WINAPI 1
+	#flag windows -lshell32
 }
 
 $if linux {
@@ -64,9 +65,9 @@ pub fn new() &Tray {
 	return &Tray{}
 }
 
-type FnTrayMenuCb = fn (mut mi MenuItem)
+type FnTrayMenuCb = fn (mi &MenuItem)
 
-[params]
+@[params]
 pub struct MenuItem {
 pub mut:
 	text     string
@@ -125,7 +126,7 @@ fn (mut t Tray) menuitems_v2c(mitems []MenuItem) &C.tray_menu {
 		ci.cb = fn (pcm &C.tray_menu) {
 			mut c := unsafe { &MenuItem(pcm.context) }
 			if c != unsafe { nil } && c.cb != unsafe { nil } {
-				c.cb(mut c)
+				c.cb(c)
 			}
 		}
 	}
