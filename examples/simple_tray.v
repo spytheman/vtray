@@ -7,7 +7,7 @@ t.set_menu([
 	vtray.new_menu_item(text: 'should be checked', checked: 1),
 	vtray.new_menu_item(
 		text: 'click me'
-		cb: fn [mut t] (omi &vtray.MenuItem) {
+		cb:   fn [mut t] (omi &vtray.MenuItem) {
 			mut mi := unsafe { omi }
 			t.set_icon('indicator-messages')
 			mi.text = time.now().str()
@@ -20,7 +20,7 @@ t.set_menu([
 	vtray.new_menu_item(text: '-', disabled: 1),
 	vtray.new_menu_item(
 		text: 'quit'
-		cb: fn [mut t] (mi &vtray.MenuItem) {
+		cb:   fn [mut t] (mi &vtray.MenuItem) {
 			t.exit() // this will make t.loop() return 0, thus exiting the app
 		}
 	),

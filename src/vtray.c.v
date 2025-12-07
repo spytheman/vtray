@@ -54,7 +54,7 @@ fn C.tray_exit()
 
 pub struct Tray {
 pub mut:
-	ctray C.tray = C.tray{
+	ctray  C.tray = C.tray{
 		icon: 0
 		menu: 0
 	}
